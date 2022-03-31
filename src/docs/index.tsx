@@ -1,19 +1,53 @@
-import { Theme } from "@emotion/react";
-import { Container, ElementalProvider } from "../lib";
+import { Box, Container, ElementalProvider, Stack, Button } from '../lib';
+import * as utils from './utils';
 
 function Docs() {
+  const item = (
+    <Box
+      sx={t => ({
+        ...utils.css.layoutBordered(t),
+        width: '10%',
+      })}
+    >
+      <p>Item</p>
+    </Box>
+  );
   return (
     <ElementalProvider normalize>
-      <Container
-        sx={(t: Theme) => ({
-          backgroundColor: t.colors.gray[50],
-          border: `1px solid${t.colors.gray[400]}`,
-        })}
-      >
-        <p>Docs</p>
+      <Container sx={utils.css.layoutBordered}>
+        <Stack dir="column" gap={2} sx={utils.css.layoutBordered}>
+          <Stack dir="column" gap={2} sx={utils.css.layoutBordered}>
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+          </Stack>
+          <Stack growItems gap={2} sx={utils.css.layoutBordered}>
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+          </Stack>
+          <Stack alignX="center" gap={2} sx={utils.css.layoutBordered}>
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+            {item}
+          </Stack>
+          {item}
+          <Stack>
+            <Button>Button</Button>
+          </Stack>
+        </Stack>
       </Container>
     </ElementalProvider>
-  )
+  );
 }
 
 export default Docs;
