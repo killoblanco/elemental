@@ -10,6 +10,7 @@ export interface StackProps extends BaseElement<'div'> {
   alignX?: CSSProperties['justifyContent'];
   alignY?: CSSProperties['alignItems'];
   growItems?: boolean;
+  noWrap?: boolean;
 }
 
 export const Stack = styled(motion.div)<StackProps>(({ theme, sx, ...props }) => ({
@@ -19,5 +20,6 @@ export const Stack = styled(motion.div)<StackProps>(({ theme, sx, ...props }) =>
   alignItems: props.alignY,
   gap: props.gap && typeof props.gap === 'number' ? theme.spacing(props.gap) : props.gap,
   flexDirection: props.dir,
+  flexWrap: props.noWrap ? 'nowrap' : 'wrap',
   ...(props.growItems && { '& > *': { flexGrow: 1 } }),
 }));
