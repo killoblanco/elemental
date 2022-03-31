@@ -1,26 +1,24 @@
-import styled from "@emotion/styled"
-import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion"
-import { padding } from "../constants/spaces";
-import { SxProp } from "../utils";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { BaseElement, Sizes } from '../elemental';
+import { withSX } from '../utils/with';
 
 
-export interface ContainerProps extends HTMLMotionProps<"div"> {
+export interface ContainerProps extends BaseElement<'div'> {
   maxWidth?: Sizes,
   fluid?: boolean,
-  sx?: SxProp,
 }
 
-export const Container = styled(motion.div, { label: 'container' })<ContainerProps>(({ theme, sx, maxWidth, fluid }) => ({
+export const Container = styled(motion.div, { label: 'container' })<ContainerProps>(({
+  theme,
+  sx,
+  maxWidth,
+  fluid,
+}) => ({
   ...(!fluid ? {
-    maxWidth: theme.breackpoints[maxWidth || 'lg'],
+    maxWidth: theme.breakpoints[maxWidth || 'lg'],
     marginLeft: 'auto',
     marginRight: 'auto',
   } : {}),
-  padding: padding.md,
-  ...(typeof sx === "function" ? sx(theme) : sx),
-}))
-
-Container.defaultProps = {
-  maxWidth: "lg",
-  fluid: false,
-}
+  ...withSX(theme, sx),
+}));
