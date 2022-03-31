@@ -41,7 +41,10 @@ function Docs() {
             {item}
           </Stack>
           {item}
-          <Stack>
+          <Stack gap={2}>
+            <Button>Button</Button>
+            <Button>Button</Button>
+            <Button>Button</Button>
             <Button>Button</Button>
           </Stack>
         </Stack>
