@@ -1,10 +1,10 @@
 import '@emotion/react';
-import { breackpoints } from './constants/spaces';
-import { openColors } from './colors/open-colors';
+import { openColors } from './colors';
+import { ColorPack } from './elemental';
 
 declare module '@emotion/react' {
   export interface Theme {
-    breackpoints: {
+    breakpoints: {
       xs: number;
       sm: number;
       md: number;
@@ -16,9 +16,14 @@ declare module '@emotion/react' {
     colorScheme: {
       mode: 'light' | 'dark';
       colors: typeof openColors;
+      primary: ColorPack;
+      secondary: ColorPack;
+      error: ColorPack;
+      success: ColorPack;
+      warning: ColorPack;
+      info: ColorPack;
     };
-    elevations: number[];
-    spacing: (all: number, lr: number, r: number, b: number) => number;
+    spacing: (all: number, lr?: number, r?: number, b?: number) => number | string;
     typography: {
       fontSize: number;
       fontFamily: string;
